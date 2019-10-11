@@ -9,6 +9,7 @@ public class PintData {
         count = 1;
     }
 
+    //TODO sketch out all fucntionality for this model
     public void increment(Double price){
         this.priceTotal += price;
         this.count +=1;
