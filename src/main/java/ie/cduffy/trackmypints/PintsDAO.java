@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class PintsDAO {
 
     //TODO look into what data store we will be using?
+    //gonna use mongo, will do tonight
     public void insertPint(String name, PintData pintData){
         try{
             //insert into chosen type of storage

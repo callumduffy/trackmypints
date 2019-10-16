@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PintsController {
 
-    //TODO need to sort DI -> autowire or not? look at FM code
     PintsService pintsService;
+
+    public PintsController(PintsService pintsService){
+        this.pintsService = pintsService;
+    }
 
     @RequestMapping(value = "/pint", method = RequestMethod.POST)
     public void addPint(@RequestParam String name, @RequestParam Double price){
