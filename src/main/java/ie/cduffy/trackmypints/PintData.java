@@ -1,8 +1,14 @@
 package ie.cduffy.trackmypints;
 
+import org.springframework.data.annotation.Id;
+
 public class PintData {
-    Double priceTotal;
-    int count;
+
+    @Id
+    private String name;
+
+    private Double priceTotal;
+    private int count;
 
     public PintData(Double price){
         this.priceTotal = price;

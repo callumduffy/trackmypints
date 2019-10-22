@@ -1,18 +1,11 @@
 package ie.cduffy.trackmypints;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
-@Component
-public class PintsDAO {
+public interface PintsDAO extends MongoRepository<PintData, String> {
 
-    //TODO look into what data store we will be using?
-    //gonna use mongo, will do tonight
-    public void insertPint(String name, PintData pintData){
-        try{
-            //insert into chosen type of storage
-        }catch(Exception e){
-            //TODO need own exception types?
-            //print exception
-        }
-    }
+//    public void insertPint(String name, PintData pintData);
+//
+//    public PintData getPintDataByName(String name);
 }
