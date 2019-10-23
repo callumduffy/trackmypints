@@ -1,24 +1,32 @@
 package ie.cduffy.trackmypints;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "pintdata")
 public class PintData {
 
     @Id
-    private String name;
+    private String id;
 
+    private String name;
     private Double priceTotal;
     private int count;
 
-    public PintData(Double price){
+    public PintData(String name, Double price){
+        this.name = name;
         this.priceTotal = price;
         count = 1;
     }
 
-    //TODO sketch out all fucntionality for this model
+    //TODO sketch out all functionality for this model
     public void increment(Double price){
         this.priceTotal += price;
         this.count +=1;
+    }
+
+    public int getPintsDrank(){
+        return this.count;
     }
 
     public void multiIncrement(Double price, int count){

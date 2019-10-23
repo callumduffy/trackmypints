@@ -11,7 +11,7 @@ import java.util.List;
 public class PintsService {
 
     @Autowired
-    PintsDAO pintsDAO;
+    PintsRepository pintsRepository;
 
     Logger logger = LoggerFactory.getLogger(PintsService.class);
 
@@ -20,9 +20,9 @@ public class PintsService {
     }
 
     public void addPint(String name, Double price){
-        PintData p = new PintData(price);
-        if(!pintsDAO.existsById(name)){
-            pintsDAO.save(p);
+        PintData p = new PintData(name, price);
+        if(!pintsRepository.existsById(name)){
+            pintsRepository.save(p);
 
         }
 
