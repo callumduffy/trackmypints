@@ -3,13 +3,13 @@ package ie.cduffy.trackmypints;
 import java.util.List;
 
 public interface PintsRepoCustom {
-    public PintData getPintDataByName();
+    public PintData getPintDataByName(String name);
 
-    public void updatePintDataByName();
+    public void updatePintDataByName(PintData pintData);
 
     public List<PintData> getAllPintData();
 
-    public boolean isPintInDB();
+    public boolean isPintInDB(String name);
 
-    public List<PintData> getPintDataByMonth();
+    public List<PintData> getPintDataByMonth(String month);
 }
