@@ -16,7 +16,7 @@ public class PintData {
     public PintData(String name, Double price){
         this.name = name;
         this.priceTotal = price;
-        count = 1;
+        this.count = 1;
     }
 
     //TODO sketch out all functionality for this model

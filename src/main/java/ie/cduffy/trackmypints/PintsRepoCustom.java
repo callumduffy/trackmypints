@@ -10,6 +10,4 @@ public interface PintsRepoCustom {
     public List<PintData> getAllPintData();
 
     public boolean isPintInDB(String name);
-
-    public List<PintData> getPintDataByMonth(String month);
 }

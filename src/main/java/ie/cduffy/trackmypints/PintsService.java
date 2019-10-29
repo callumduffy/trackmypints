@@ -10,27 +10,28 @@ import java.util.List;
 @Service
 public class PintsService {
 
-    @Autowired
-    PintsRepository pintsRepository;
+    private PintsRepository pintsRepository;
 
     Logger logger = LoggerFactory.getLogger(PintsService.class);
 
-    public PintsService(){
-
+    public PintsService(PintsRepository pintsRepository){
+        this.pintsRepository = pintsRepository;
     }
 
     public void addPint(String name, Double price){
-        PintData p = new PintData(name, price);
-        if(!pintsRepository.existsById(name)){
-            pintsRepository.save(p);
+        PintData p = getPintDataByName(name);
 
+        if(p!=null){
+            p.increment(price);
         }
-
-        throw new IllegalArgumentException("Pint name already in DB");
+        else{
+            p = new PintData(name,price);
+        }
+        pintsRepository.save(p);
     }
 
     public PintData getPintDataByName(String name){
-        return null;
+        return pintsRepository.getPintDataByName(name);
     }
 
     public List<PintData> getAllPintData(){

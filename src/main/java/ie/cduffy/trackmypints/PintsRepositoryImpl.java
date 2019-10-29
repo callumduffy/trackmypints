@@ -34,11 +34,6 @@ public class PintsRepositoryImpl implements PintsRepoCustom {
 
     @Override
     public boolean isPintInDB(String name) {
-        return (getPintDataByName(name)!=null) ? true : false;
-    }
-
-    @Override
-    public List<PintData> getPintDataByMonth() {
-        return null;
+        return getPintDataByName(name) != null;
     }
 }
