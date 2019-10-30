@@ -13,16 +13,18 @@ public class PintData {
     private Double priceTotal;
     private int count;
 
-    public PintData(String name, Double price){
+    public PintData(String name, Double priceTotal){
         this.name = name;
-        this.priceTotal = price;
+        this.priceTotal = priceTotal;
         this.count = 1;
     }
 
-    //TODO sketch out all functionality for this model
-    public void increment(Double price){
-        this.priceTotal += price;
-        this.count +=1;
+    public Double getPriceTotal(){
+        return this.priceTotal;
+    }
+
+    public int getCount(){
+        return this.count;
     }
 
     public int getPintsDrank(){
@@ -36,5 +38,9 @@ public class PintData {
 
     public Double getAveragePrice(){
         return priceTotal/count;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }

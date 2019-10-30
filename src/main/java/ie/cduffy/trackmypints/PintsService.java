@@ -2,7 +2,6 @@ package ie.cduffy.trackmypints;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,12 +21,14 @@ public class PintsService {
         PintData p = getPintDataByName(name);
 
         if(p!=null){
-            p.increment(price);
+            logger.info("New pint being added of type: " + name);
+            pintsRepository.updatePintDataByName(p, price);
         }
         else{
+            logger.info("Incrementing count for type: " + name);
             p = new PintData(name,price);
+            pintsRepository.addPint(p);
         }
-        pintsRepository.save(p);
     }
 
     public PintData getPintDataByName(String name){
@@ -35,6 +36,6 @@ public class PintsService {
     }
 
     public List<PintData> getAllPintData(){
-        return null;
+        return pintsRepository.getAllPintData();
     }
 }
