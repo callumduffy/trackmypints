@@ -27,17 +27,9 @@ public class PintData {
         return this.count;
     }
 
-    public int getPintsDrank(){
-        return this.count;
-    }
-
     public void multiIncrement(Double price, int count){
         this.priceTotal += (price * count);
         this.count += count;
-    }
-
-    public Double getAveragePrice(){
-        return priceTotal/count;
     }
 
     public String getName(){
