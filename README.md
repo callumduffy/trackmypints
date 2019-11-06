@@ -1,7 +1,7 @@
 # trackmypints
 
 ### The premise
-This is a rather simple applications and that's all it's meant to be, I wanted to develop something just to practive doing something the whole way from front-end to database layer, and what more controversial way to do it as an Irish man that to actually track how much money I'm spending on pints.
+This is a rather simple application and that's all it's meant to be, I wanted to develop something just to practice doing something the whole way from front-end to database layer, and what more controversial way to do it as an Irish man that to actually track how much money I'm spending on pints.
 
 Please don't tell me extended family about this or I won't be invited to weddings and stuff for fear I'll track how much they drink too.
 
