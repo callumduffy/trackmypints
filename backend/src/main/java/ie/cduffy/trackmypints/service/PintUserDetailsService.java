@@ -1,4 +1,4 @@
-package ie.cduffy.trackmypints;
+package ie.cduffy.trackmypints.service;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

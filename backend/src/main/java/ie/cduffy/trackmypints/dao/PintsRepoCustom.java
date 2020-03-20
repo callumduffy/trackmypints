@@ -1,4 +1,6 @@
-package ie.cduffy.trackmypints;
+package ie.cduffy.trackmypints.dao;
+
+import ie.cduffy.trackmypints.model.PintData;
 
 import java.util.List;
 

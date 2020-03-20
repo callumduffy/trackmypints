@@ -1,5 +1,7 @@
-package ie.cduffy.trackmypints;
+package ie.cduffy.trackmypints.controller;
 
+import ie.cduffy.trackmypints.model.PintData;
+import ie.cduffy.trackmypints.service.PintsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;

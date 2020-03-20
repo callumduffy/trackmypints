@@ -1,14 +1,12 @@
-package ie.cduffy.trackmypints;
+package ie.cduffy.trackmypints.dao;
 
-import com.mongodb.WriteResult;
-import com.mongodb.client.result.UpdateResult;
+import ie.cduffy.trackmypints.model.PintData;
+import ie.cduffy.trackmypints.service.PintsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 
 import java.util.List;
 
