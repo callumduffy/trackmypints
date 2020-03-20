@@ -27,9 +27,9 @@ public class PintData {
         return this.count;
     }
 
-    public void multiIncrement(Double price, int count){
-        this.priceTotal += (price * count);
-        this.count += count;
+    public void increment(Double price){
+        this.priceTotal += price;
+        this.count += 1;
     }
 
     public String getName(){

@@ -21,11 +21,11 @@ public class PintsService {
         PintData p = getPintDataByName(name);
 
         if(p!=null){
-            logger.info("New pint being added of type: " + name);
+            logger.info("Incrementing count for type: " + name);
             pintsRepository.updatePintDataByName(p, price);
         }
         else{
-            logger.info("Incrementing count for type: " + name);
+            logger.info("New pint being added of type: " + name);
             p = new PintData(name,price);
             pintsRepository.addPint(p);
         }

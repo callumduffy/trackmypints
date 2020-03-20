@@ -37,11 +37,9 @@ public class PintsRepositoryImpl implements PintsRepoCustom {
 
     @Override
     public void updatePintDataByName(PintData pintData, Double price) {
-        Query query = new Query(Criteria.where("name").is(pintData.getName()));
-        Update update = new Update();
-        update.set("priceTotal", pintData.getPriceTotal() + price);
-
-        mongoTemplate.updateFirst(query, update, PintData.class);
+        pintData.increment(price);
+        logger.info("Pint incremented.");
+        mongoTemplate.save(pintData, "pintdata");
     }
 
     @Override
@@ -56,6 +54,7 @@ public class PintsRepositoryImpl implements PintsRepoCustom {
 
     @Override
     public void addPint(PintData pintData) {
-        mongoTemplate.insert(pintData);
+        logger.info("Inserting pint.");
+        mongoTemplate.save(pintData, "pintdata");
     }
 }
