@@ -14,7 +14,7 @@ public class PintsRepositoryImpl implements PintsRepoCustom {
 
     private MongoTemplate mongoTemplate;
 
-    Logger logger = LoggerFactory.getLogger(PintsService.class);
+    private Logger logger = LoggerFactory.getLogger(PintsService.class);
 
     public PintsRepositoryImpl(MongoTemplate mongoTemplate){
         this.mongoTemplate = mongoTemplate;

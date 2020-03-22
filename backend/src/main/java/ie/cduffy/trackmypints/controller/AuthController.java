@@ -4,6 +4,8 @@ import ie.cduffy.trackmypints.model.AuthRequest;
 import ie.cduffy.trackmypints.model.AuthResponse;
 import ie.cduffy.trackmypints.service.JwtService;
 import ie.cduffy.trackmypints.service.PintUserDetailsService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,6 +23,8 @@ public class AuthController {
     private PintUserDetailsService userDetailsService;
     private JwtService jwtService;
 
+    private Logger logger = LoggerFactory.getLogger(AuthController.class);
+
     public AuthController(AuthenticationManager authenticationManager, PintUserDetailsService pintUserDetailsService,
                           JwtService jwtService){
         this.authenticationManager = authenticationManager;
@@ -30,6 +34,7 @@ public class AuthController {
 
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthToken(@RequestBody AuthRequest authRequest) throws Exception{
+        logger.info("JWT Auth request received.");
         try{
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())

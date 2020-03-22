@@ -13,7 +13,7 @@ public class PintsService {
 
     private PintsRepository pintsRepository;
 
-    Logger logger = LoggerFactory.getLogger(PintsService.class);
+    private Logger logger = LoggerFactory.getLogger(PintsService.class);
 
     public PintsService(PintsRepository pintsRepository){
         this.pintsRepository = pintsRepository;

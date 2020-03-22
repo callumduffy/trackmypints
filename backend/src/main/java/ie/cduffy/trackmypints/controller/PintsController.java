@@ -11,9 +11,9 @@ import java.util.List;
 @RestController
 public class PintsController {
 
-    PintsService pintsService;
+    private PintsService pintsService;
 
-    Logger logger = LoggerFactory.getLogger(PintsController.class);
+    private Logger logger = LoggerFactory.getLogger(PintsController.class);
 
     public PintsController(PintsService pintsService){
         this.pintsService = pintsService;

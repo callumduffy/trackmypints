@@ -13,6 +13,6 @@ public class PintUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new User("username", "password", new ArrayList<>());
+        return new User(System.getenv("TMP-USERNAME"), System.getenv("TMP-PASSWORD"), new ArrayList<>());
     }
 }
