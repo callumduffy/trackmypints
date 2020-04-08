@@ -3,11 +3,7 @@ package ie.cduffy.trackmypints.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "pintdata")
 public class PintData {
-
-    @Id
-    private String id;
 
     private Double priceTotal;
     private int count;

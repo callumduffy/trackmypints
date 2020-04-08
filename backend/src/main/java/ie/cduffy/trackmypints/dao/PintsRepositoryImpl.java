@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 public class PintsRepositoryImpl implements PintsRepoCustom {
 
@@ -36,22 +37,32 @@ public class PintsRepositoryImpl implements PintsRepoCustom {
     @Override
     public void updatePint(PintUser pintUser) {
         logger.info("Updating pint.");
-        mongoTemplate.save(pintUser, "pintdata");
+        mongoTemplate.save(pintUser, "pintusers");
     }
 
     @Override
     public HashMap<String, PintData> getAllPintData(String username) {
-        return getPintUserByName(username).getPintData();
+        try{
+            PintUser temp = getPintUserByName(username);
+            HashMap<String, PintData> temp2 = temp.getPintData();
+            return temp2;
+        } catch (NullPointerException npe){
+            throw new NoSuchElementException("User has no PintData added yet.");
+        }
     }
 
     @Override
     public boolean isPintInDB(String username, String pintName) {
-        return getPintUserByName(username).getPintData().containsKey(pintName);
+        try{
+            return getPintUserByName(username).getPintData().containsKey(pintName);
+        } catch (NullPointerException npe){
+            throw new NoSuchElementException("User has no PintData added yet.");
+        }
     }
 
     @Override
     public void addPint(PintUser pintUser) {
         logger.info("Inserting pint.");
-        mongoTemplate.save(pintUser, "pintdata");
+        mongoTemplate.save(pintUser, "pintusers");
     }
 }

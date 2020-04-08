@@ -26,18 +26,28 @@ public class PintsService {
     public void addPint(String pintName, Double price){
         String username = getUsername();
         PintUser pu = getPintUserByName(username);
-        PintData p = pu.getPintDataByName(pintName);
-        if(p!=null){
-            logger.info("Incrementing count for type: " + pintName);
-            pu.addOrIncrementPint(pintName, price);
-            logger.info("Pint incremented.");
-            pintsRepository.updatePintDataByName(username, pintName, p);
+
+        if(pu != null){
+            PintData p = pu.getPintDataByName(pintName);
+            if(p!=null){
+                logger.info("Incrementing count for type: " + pintName);
+                pu.addOrIncrementPint(pintName, price);
+                logger.info("Pint incremented.");
+                pintsRepository.updatePint(pu);
+            }
+            else{
+                logger.info("New pint being added of type: " + pintName);
+                pu.addOrIncrementPint(pintName, price);
+                pintsRepository.addPint(pu);
+            }
         }
         else{
-            logger.info("New pint being added of type: " + pintName);
+            logger.info("Initiating new registered user with a pint of:" + pintName);
+            pu = new PintUser(username);
             pu.addOrIncrementPint(pintName, price);
-            pintsRepository.addPint(username, pintName, p);
+            pintsRepository.addPint(pu);
         }
+
     }
 
     public PintData getPintDataByName(String pintName){
@@ -60,6 +70,7 @@ public class PintsService {
 
     private String getUsername(){
         UserDetails ud = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        logger.info("USERNAME:" + ud.getUsername());
         return ud.getUsername();
     }
 }

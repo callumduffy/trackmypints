@@ -1,8 +1,15 @@
 package ie.cduffy.trackmypints.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.HashMap;
 
+@Document(collection = "pintusers")
 public class PintUser {
+
+    @Id
+    private String id;
 
     private String username;
     private HashMap<String, PintData> pints;

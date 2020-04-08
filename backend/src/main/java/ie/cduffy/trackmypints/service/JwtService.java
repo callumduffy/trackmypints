@@ -16,7 +16,7 @@ public class JwtService {
 
     public JwtService(){}
 
-    private String SECRET_KEY = System.getenv("TMP-SECRET");
+    private String SECRET_KEY = System.getenv("TMP_SECRET");
 
     public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);
