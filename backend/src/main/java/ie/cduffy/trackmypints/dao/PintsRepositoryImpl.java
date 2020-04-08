@@ -1,58 +1,57 @@
 package ie.cduffy.trackmypints.dao;
 
 import ie.cduffy.trackmypints.model.PintData;
-import ie.cduffy.trackmypints.service.PintsService;
+import ie.cduffy.trackmypints.model.PintUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class PintsRepositoryImpl implements PintsRepoCustom {
 
     private MongoTemplate mongoTemplate;
 
-    private Logger logger = LoggerFactory.getLogger(PintsService.class);
+    private Logger logger = LoggerFactory.getLogger(PintsRepositoryImpl.class);
 
     public PintsRepositoryImpl(MongoTemplate mongoTemplate){
         this.mongoTemplate = mongoTemplate;
     }
 
     @Override
-    public PintData getPintDataByName(String name) {
+    public PintUser getPintUserByName(String username) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("name").is(name));
+        query.addCriteria(Criteria.where("username").is(username));
 
         try{
-            return mongoTemplate.findOne(query, PintData.class);
+            return mongoTemplate.findOne(query, PintUser.class);
         }catch(Exception e){
-            logger.info("Error retrieving data for name: " + name);
+            logger.info("Error retrieving data for username: " + username);
             return null;
         }
     }
 
     @Override
-    public void updatePintDataByName(PintData pintData, Double price) {
-        pintData.increment(price);
-        logger.info("Pint incremented.");
-        mongoTemplate.save(pintData, "pintdata");
+    public void updatePint(PintUser pintUser) {
+        logger.info("Updating pint.");
+        mongoTemplate.save(pintUser, "pintdata");
     }
 
     @Override
-    public List<PintData> getAllPintData() {
-        return mongoTemplate.findAll(PintData.class);
+    public HashMap<String, PintData> getAllPintData(String username) {
+        return getPintUserByName(username).getPintData();
     }
 
     @Override
-    public boolean isPintInDB(String name) {
-        return getPintDataByName(name) != null;
+    public boolean isPintInDB(String username, String pintName) {
+        return getPintUserByName(username).getPintData().containsKey(pintName);
     }
 
     @Override
-    public void addPint(PintData pintData) {
+    public void addPint(PintUser pintUser) {
         logger.info("Inserting pint.");
-        mongoTemplate.save(pintData, "pintdata");
+        mongoTemplate.save(pintUser, "pintdata");
     }
 }

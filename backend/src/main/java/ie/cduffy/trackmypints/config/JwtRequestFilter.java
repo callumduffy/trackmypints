@@ -1,4 +1,4 @@
-package ie.cduffy.trackmypints;
+package ie.cduffy.trackmypints.config;
 
 import ie.cduffy.trackmypints.service.JwtService;
 import ie.cduffy.trackmypints.service.PintUserDetailsService;

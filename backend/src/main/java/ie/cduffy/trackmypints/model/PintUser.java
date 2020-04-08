@@ -20,4 +20,21 @@ public class PintUser {
             return null;
         }
     }
+
+    public void addOrIncrementPint(String pintName, Double price){
+        PintData p = getPintDataByName(pintName);
+
+        if(p==null){
+            p = new PintData(price);
+            this.pints.put(pintName, p);
+        }
+        else{
+            p.increment(price);
+            this.pints.put(pintName, p);
+        }
+    }
+
+    public HashMap<String, PintData> getPintData(){
+        return this.pints;
+    }
 }

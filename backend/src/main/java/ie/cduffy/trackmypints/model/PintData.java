@@ -9,12 +9,10 @@ public class PintData {
     @Id
     private String id;
 
-    private String name;
     private Double priceTotal;
     private int count;
 
-    public PintData(String name, Double priceTotal){
-        this.name = name;
+    public PintData(Double priceTotal){
         this.priceTotal = priceTotal;
         this.count = 1;
     }
@@ -30,9 +28,5 @@ public class PintData {
     public void increment(Double price){
         this.priceTotal += price;
         this.count += 1;
-    }
-
-    public String getName(){
-        return this.name;
     }
 }

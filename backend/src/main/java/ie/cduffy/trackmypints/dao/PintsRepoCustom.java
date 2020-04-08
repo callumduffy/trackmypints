@@ -1,17 +1,18 @@
 package ie.cduffy.trackmypints.dao;
 
 import ie.cduffy.trackmypints.model.PintData;
+import ie.cduffy.trackmypints.model.PintUser;
 
-import java.util.List;
+import java.util.HashMap;
 
 public interface PintsRepoCustom {
-    public PintData getPintDataByName(String name);
+    public PintUser getPintUserByName(String username);
 
-    public void updatePintDataByName(PintData pintData, Double price);
+    public void updatePint(PintUser pintUser);
 
-    public List<PintData> getAllPintData();
+    public HashMap<String, PintData> getAllPintData(String username);
 
-    public boolean isPintInDB(String name);
+    public boolean isPintInDB(String username, String pintName);
 
-    public void addPint(PintData pintData);
+    public void addPint(PintUser pintUser);
 }

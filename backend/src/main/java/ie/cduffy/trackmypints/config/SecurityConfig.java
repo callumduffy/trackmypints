@@ -1,7 +1,6 @@
-package ie.cduffy.trackmypints;
+package ie.cduffy.trackmypints.config;
 
 import ie.cduffy.trackmypints.service.PintUserDetailsService;
-import io.jsonwebtoken.Jwt;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
