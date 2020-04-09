@@ -27,7 +27,7 @@ public class PintsRepositoryImpl implements PintsRepoCustom {
         query.addCriteria(Criteria.where("username").is(username));
 
         try{
-            return mongoTemplate.findOne(query, PintUser.class);
+            return mongoTemplate.findOne(query, PintUser.class, "pintusers");
         }catch(Exception e){
             logger.info("Error retrieving data for username: " + username);
             return null;
