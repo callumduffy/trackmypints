@@ -1,6 +1,6 @@
 # trackmypints
 
-## Very much a WIP still, so please be gentle with criticisms x
+## Very much a WIP still, so please be gentle with criticisms x (any mention of front end not done yet)
 
 ### The premise
 This is a rather simple application and that's all it's meant to be, I wanted to develop something just to practice
