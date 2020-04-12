@@ -7,10 +7,14 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-public class ConsumerRepoImpl implements ConsumerRepoCustom {
+public class ConsumerRepositoryImpl implements ConsumerRepoCustom {
 
     private MongoTemplate mongoTemplate;
-    private Logger logger = LoggerFactory.getLogger(ConsumerRepoImpl.class);
+    private Logger logger = LoggerFactory.getLogger(ConsumerRepositoryImpl.class);
+
+    public ConsumerRepositoryImpl(MongoTemplate mongoTemplate){
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @Override
     public Consumer getConsumerByUsername(String username) {
